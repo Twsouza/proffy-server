@@ -7,7 +7,7 @@ export async function up(knex: Knex) {
       .references('id')
       .inTable('users');
     table.timestamp('create_at')
-      .defaultTo('now()')
+      .defaultTo(knex.raw('CURRENT_TIMESTAMP'))
       .notNullable();
   });
 }
